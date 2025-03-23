@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 *.pyo
 res_sat.egg-info/
+.idea/
