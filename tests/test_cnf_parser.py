@@ -15,7 +15,7 @@ p cnf 3 2
         with open(test_file, "w") as f:
             f.write(cnf_content)
         
-        num_vars, clauses = parse_cnf(test_file)
+        num_vars, clauses,_ = parse_cnf(test_file)
         self.assertEqual(num_vars, 3)
         self.assertEqual(len(clauses), 2)
         self.assertIn(frozenset({1, -3}), clauses)

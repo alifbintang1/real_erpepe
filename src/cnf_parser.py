@@ -10,11 +10,15 @@ def parse_cnf(file_path: str):
     """
     clauses = []
     num_vars = None
-
+    satisfiable = None
     with open(file_path, "r") as f:
         for line in f:
             line = line.strip()
             if line == "" or line.startswith("c"):
+                if "NOTE: Not Satisfiable" in line:
+                    satisfiable = False
+                elif "NOTE: Satisfiable" in line:
+                    satisfiable = True
                 continue
             if line.startswith("p"):
                 # Format: p cnf num_vars num_clauses
@@ -28,4 +32,4 @@ def parse_cnf(file_path: str):
             literals = [int(tok) for tok in tokens if tok and int(tok) != 0]
             if literals:
                 clauses.append(frozenset(literals))
-    return num_vars, clauses
+    return num_vars, clauses, satisfiable
