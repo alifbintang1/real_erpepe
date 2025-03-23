@@ -1,0 +1,39 @@
+c Simplified instance with 20 variables and 30 clauses (satisfiable)
+p cnf 20 30
+c Positive clauses: each pigeon must choose at least one hole
+1 2 3 4 5 0
+6 7 8 9 10 0
+11 12 13 14 15 0
+16 17 18 19 20 0
+c Negative clauses: at most one pigeon per hole (with 4 clauses dropped)
+c Hole 1 (variables 1,6,11,16)
+-1 -6 0
+-1 -11 0
+-1 -16 0
+-6 -16 0
+-11 -16 0
+c Hole 2 (variables 2,7,12,17)
+-2 -7 0
+-2 -12 0
+-2 -17 0
+-7 -17 0
+-12 -17 0
+c Hole 3 (variables 3,8,13,18)
+-3 -8 0
+-3 -13 0
+-3 -18 0
+-8 -18 0
+-13 -18 0
+c Hole 4 (variables 4,9,14,19)
+-4 -9 0
+-4 -14 0
+-4 -19 0
+-9 -19 0
+-14 -19 0
+c Hole 5 (variables 5,10,15,20)
+-5 -10 0
+-5 -15 0
+-5 -20 0
+-10 -15 0
+-10 -20 0
+-15 -20 0

@@ -7,7 +7,7 @@ from resolvent_generator import generate_resolvents_minimal
 from res_sat import res_sat
 from validator import validate_interpretation
 
-FOLDER = "data/AIM"
+FOLDER = "data/PHOLE"
 from tqdm import tqdm
 
 
