@@ -5,9 +5,7 @@ This project implements the RES‑SAT algorithm in Python. The RES‑SAT algorit
 
 ## How to Run
 
-1. **Parsing and Solving a CNF instance**
+python src/main.py examples/aim-100-1_6-no-1.cnf
 
-   From the project root, run:
-   ```bash
-   python src/main.py examples/aim-50-1_6-yes1-4.cnf
+python src/main.py examples/aim-50-1_6-yes1-4_simplified.cnf
 
