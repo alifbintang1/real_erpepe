@@ -45,17 +45,11 @@ class TestAIM(unittest.TestCase):
             runtimes.append(instance_runtime)
             current_accuracy = sum(p == l for p, l in zip(pred, labels)) / len(labels) if labels else 0
             current_avg_runtime = sum(runtimes) / len(runtimes) if runtimes else 0
-            if len(runtimes) > 1:
-                variance = sum((x - current_avg_runtime) ** 2 for x in runtimes) / len(runtimes)
-                current_std_runtime = math.sqrt(variance)
-            else:
-                current_std_runtime = 0  
-                
+     
             tqdm.write(f"After processing {cnf_file}:")
             tqdm.write(f"  True Label: {true_label} | Pred: {predicted_label}")
             tqdm.write(f"  Accuracy: {current_accuracy:.2%}")
             tqdm.write(f"  Average Runtime per CNF Instance: {current_avg_runtime:.4f} seconds")
-            tqdm.write(f"  Standard Deviation of Runtime: {current_std_runtime:.4f} seconds\n")
 
         correct_predictions = sum(p == l for p, l in zip(pred, labels))
         self.assertGreaterEqual(correct_predictions / len(labels) if labels else 0, 0)
