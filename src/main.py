@@ -1,6 +1,6 @@
 import sys
 from cnf_parser import parse_cnf
-from resolvent_generator import generate_resolvents_minimal
+from resolvent_generator import generate_resolvents_minimal, generate_resolvents
 from res_sat import res_sat
 from validator import validate_interpretation
 
@@ -17,7 +17,7 @@ def main():
     print(f"Number of clauses: {len(clauses)}")
     
     print("Generating resolution closure (this may take some time for large inputs)...")
-    R = generate_resolvents_minimal(clauses)
+    R = generate_resolvents(clauses)
     print(f"Resolution closure generated with {len(R)} clauses.")
     
     print("Running RES-SAT procedure...")

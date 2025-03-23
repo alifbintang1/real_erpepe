@@ -17,6 +17,38 @@ def filter_minimal(clauses):
                 break
     return minimal
 
+def generate_resolvents(clauses, max_iterations=2, max_resolvents=10000):
+    R = set(clauses)
+    iteration = 0
+    new_resolvents = set()
+    changed = True
+
+    while changed and iteration < max_iterations and len(R) < max_resolvents:
+        iteration += 1
+        changed = False
+        current_clauses = list(R)
+        for i in range(len(current_clauses)):
+            for j in range(i+1, len(current_clauses)):
+                c1 = current_clauses[i]
+                c2 = current_clauses[j]
+                for literal in c1:
+                    if -literal in c2:
+                        resolvent = (c1 - {literal}) | (c2 - {-literal})
+                        # Skip tautologies
+                        if any(l in resolvent and -l in resolvent for l in resolvent):
+                            continue
+                        resolvent = frozenset(resolvent)
+                        if resolvent not in R and resolvent not in new_resolvents:
+                            new_resolvents.add(resolvent)
+        if new_resolvents:
+            R |= new_resolvents
+            print(f"Iteration {iteration}: added {len(new_resolvents)} new resolvents; total now: {len(R)}")
+            new_resolvents = set()
+            changed = True
+        else:
+            print(f"Iteration {iteration}: no new resolvents found, stopping.")
+    return R
+
 def generate_resolvents_minimal(clauses, max_iterations=2, max_resolvents=10000, verbose = True):
     """
     Generate the resolution closure R = RES(S) with only minimal resolvents.

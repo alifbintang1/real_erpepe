@@ -4,7 +4,7 @@ import os
 import psutil
 import matplotlib.pyplot as plt
 from cnf_parser import parse_cnf
-from resolvent_generator import generate_resolvents_minimal
+from resolvent_generator import generate_resolvents_minimal, generate_resolvents
 from res_sat import res_sat
 from validator import validate_interpretation
 import pandas as pd
@@ -29,7 +29,7 @@ def measure_performance(cnf_file, use_minimal=True, verbose=True):
     
     # Parse file CNF
     start_time = time.time()
-    num_vars, clauses = parse_cnf(cnf_file)
+    num_vars, clauses, _ = parse_cnf(cnf_file)
     parse_time = time.time() - start_time
     
     if verbose:
@@ -41,8 +41,8 @@ def measure_performance(cnf_file, use_minimal=True, verbose=True):
     start_time = time.time()
     if use_minimal:
         R = generate_resolvents_minimal(clauses)
-    # else:
-    #     R = generate_resolvents(clauses)
+    else:
+        R = generate_resolvents(clauses)
     resolvent_time = time.time() - start_time
     
     if verbose:
