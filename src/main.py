@@ -12,7 +12,7 @@ def main():
     
     cnf_file = sys.argv[1]
     print(f"Reading CNF file: {cnf_file}")
-    num_vars, clauses, _ = parse_cnf(cnf_file)
+    num_vars, clauses,_ = parse_cnf(cnf_file)
     print(f"Number of variables: {num_vars}")
     print(f"Number of clauses: {len(clauses)}")
     
@@ -27,6 +27,7 @@ def main():
 
     # Validate the interpretation against the original CNF clauses
     if validate_interpretation(clauses, interpretation):
+        print(validate_interpretation(clauses, interpretation) == _)
         print("Validation passed: the interpretation satisfies the CNF formula.")
     else:
         print("Validation failed: the interpretation does NOT satisfy the CNF formula.")

@@ -28,7 +28,6 @@ def parse_cnf(file_path: str):
                 continue
             # Each clause line ends with a 0. Split the line into tokens.
             tokens = re.split(r'\s+', line)
-            # Filter out any empty tokens and convert to int.
             literals = [int(tok) for tok in tokens if tok and int(tok) != 0]
             if literals:
                 clauses.append(frozenset(literals))
