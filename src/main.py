@@ -1,6 +1,6 @@
 import sys
 from cnf_parser import parse_cnf
-from resolvent_generator import generate_resolvents, generate_resolvents_minimal
+from resolvent_generator import generate_resolvents_minimal
 from res_sat import res_sat
 from validator import validate_interpretation
 
