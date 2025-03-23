@@ -49,7 +49,7 @@ def filter_minimal(clauses):
                 break
     return minimal
 
-def generate_resolvents_minimal(clauses, max_iterations=2, max_resolvents=10000):
+def generate_resolvents_minimal(clauses, max_iterations=2, max_resolvents=10000, verbose = True):
     """
     Generate the resolution closure R = RES(S) with only minimal resolvents.
     
@@ -67,7 +67,8 @@ def generate_resolvents_minimal(clauses, max_iterations=2, max_resolvents=10000)
     changed = True
 
     while changed and iteration < max_iterations and len(R) < max_resolvents:
-        print(f"Starting iteration {iteration}...")
+        if verbose: 
+            print(f"Starting iteration {iteration}...")
         iteration += 1
         changed = False
         current_clauses = list(R)
@@ -89,10 +90,12 @@ def generate_resolvents_minimal(clauses, max_iterations=2, max_resolvents=10000)
             R |= new_resolvents
             # Filter R to keep only minimal resolvents
             R = filter_minimal(R)
-            print(f"Iteration {iteration}: added {len(new_resolvents)} new resolvents; minimal total now: {len(R)}")
+            if verbose:
+                print(f"Iteration {iteration}: added {len(new_resolvents)} new resolvents; minimal total now: {len(R)}")
             new_resolvents = set()
             changed = True
         else:
-            print(f"Iteration {iteration}: no new resolvents found, stopping.")
+            if verbose:
+                print(f"Iteration {iteration}: no new resolvents found, stopping.")
     return R
 

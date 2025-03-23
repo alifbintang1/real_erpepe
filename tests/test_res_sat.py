@@ -1,6 +1,6 @@
 import unittest
 from src.cnf_parser import parse_cnf
-from src.resolvent_generator import generate_resolvents
+from src.resolvent_generator import generate_resolvents_minimal
 from src.res_sat import res_sat
 import os
 
@@ -17,8 +17,8 @@ p cnf 2 2
         with open(test_file, "w") as f:
             f.write(cnf_content)
         
-        num_vars, clauses = parse_cnf(test_file)
-        R = generate_resolvents(clauses)
+        num_vars, clauses,_ = parse_cnf(test_file)
+        R = generate_resolvents_minimal(clauses)
         interpretation = res_sat(R, num_vars)
         # For this CNF, both variables can be set to True.
         self.assertTrue(1 in interpretation or -1 in interpretation)

@@ -12,7 +12,7 @@ def main():
     
     cnf_file = sys.argv[1]
     print(f"Reading CNF file: {cnf_file}")
-    num_vars, clauses = parse_cnf(cnf_file)
+    num_vars, clauses, _ = parse_cnf(cnf_file)
     print(f"Number of variables: {num_vars}")
     print(f"Number of clauses: {len(clauses)}")
     
