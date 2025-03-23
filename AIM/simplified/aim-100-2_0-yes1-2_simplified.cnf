@@ -1,0 +1,39 @@
+c FILE: valid-satisfiable-aim-20-30.cnf
+c
+c SOURCE: Created as a reduced satisfiable instance
+c
+c DESCRIPTION: Manually constructed satisfiable instance with 20 variables and 30 clauses
+c
+c NOTE: Satisfiable - verified with solution x = (1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+c
+p cnf 20 30
+1 2 3 0
+1 2 -3 0
+1 -2 3 0
+1 -2 -3 0
+-1 2 3 0
+-1 2 -3 0
+-1 -2 3 0
+1 4 5 0
+1 4 -5 0
+1 -4 5 0
+1 -4 -5 0
+-1 4 5 0
+-1 4 -5 0
+-1 -4 5 0
+2 4 6 0
+2 4 -6 0
+2 -4 6 0
+-2 4 6 0
+-2 4 -6 0
+-2 -4 6 0
+3 5 7 0
+3 5 -7 0
+3 -5 7 0
+-3 5 7 0
+-3 5 -7 0
+-3 -5 7 0
+8 9 10 0
+11 12 13 0
+14 15 16 0
+17 18 19 0
